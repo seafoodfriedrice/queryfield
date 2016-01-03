@@ -26,6 +26,7 @@ with app.app_context():
         __tablename__ = "status"
         id = db.Column(db.Integer, primary_key=True)
         name = db.Column(db.String(32))
+        servers = db.relationship('Server', backref='status')
 
         def __unicode__(self):
             return self.name
