@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{{ url_for('static',
+    filename='css/bootstrap.min.css') }}">
+  <title>QueryField</title>
+</head>
+<body>
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <h1>Get Server</h1> 
+    <form method="POST">
+      {{ form.csrf_token }}
+      <div class="form-group">
+      {{ form.ip.label }}
+      {{ form.ip(class='form-control') }}
+      </div>
+      <div class="form-group">
+      {{ form.status.label }}
+      {{ form.status(class='form-control') }}
+      </div>
+      <div class="form-group">
+      {{ form.provider_account.provider.label }}
+      {{ form.provider_account.provider(class='form-control') }}
+      </div>
+      <div class="form-group">
+      {{ form.provider_account.username.label }}
+      {{ form.provider_account.username(class='form-control') }}
+      </div>
+      <div class="form-group">
+      {{ form.provider_account.password.label }}
+      {{ form.provider_account.password(class='form-control') }}
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
